@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(Lab2_Rob22.1)
+project(lab2rob22_1)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
