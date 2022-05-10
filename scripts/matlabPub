@@ -1,6 +1,0 @@
-clear; clc;
-rosinit;
-
-
-
-rosshutdown;

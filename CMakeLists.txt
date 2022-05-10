@@ -57,11 +57,7 @@ include_directories(
 # )
 
 catkin_install_python(PROGRAMS
-  scripts/turtlePos.py
-  scripts/turtleSpawn.py
-  scripts/turtleSub.py
-  scripts/turtleVel.py
-  scripts/myTeleopKey.py 
+  scripts/KeyMove.py 
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

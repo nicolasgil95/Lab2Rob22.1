@@ -3,7 +3,7 @@
   <name>lab2rob22_1</name>
   <version>1.0.0</version>
   <description>Lab 2 Robotics class 22-1</description>
-  <maintainer email="nigilro@unal.edu.co">felipe</maintainer>
+  <maintainer email="nigilro@unal.edu.co">Nicolas</maintainer>
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>
