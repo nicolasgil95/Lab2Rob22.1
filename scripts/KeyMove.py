@@ -29,9 +29,12 @@ def getkey():
 
 def currentAng(id):
     rospy.init_node('joint_listener', anonymous=True)
-    rospy.Subscriber("/dynamixel_workbench/joint_states", JointState, callback)
+    rospy.Subscriber("/dynamixel_workbench/joint_states", jointState, callback)
+    rospy.spin()
     
-
+def callback(data):
+    rospy.loginfo(data.position)
+    
 
 def nextArt():
     if artID==4:
