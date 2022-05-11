@@ -22,10 +22,30 @@ jointSub.LatestMessage
 %% Creacion de comunicacion con servicio
 PxCommSrv= rossvcclient('/dynamixel_workbench/dynamixel_command'); %creacion cliente de servicio
 CommandMsg= rosmessage(PxCommSrv);  %Creacion del mensaje 
+
 CommandMsg.id=3 %def def ID motor a mover
 CommandMsg.add_name='Goal_Position' %def nombre del registro a usar
 CommandMsg.value = 715 %def angulo, 715b=53.5254°
-call(PxCommSrv,CommandMsg)
+
+call(PxCommSrv,CommandMsg)%llamado al servicio con msj definido
 
 
+%% definicion de posicion de articulaciones
+q=[0 0 0 0];
+
+% envio de posicion a robot fisico
+for i=1:4
+    CommandMsg.id=i;
+    CommandMsg.add_name='Goal_Position';
+    CommandMsg.value=(q(i)+135/(270/1024));
+    call(PxCommSrv,CommandMsg);
+end
+
+%Lectura posicion del robot
+Q=jointSub.LatestMessage.Position;
+
+%Grafica de las posiciones actuales del robot
+PX.plot(Q','workspace',ws,'noname')
+
+%% Apagado del nodo
 rosshutdown;
