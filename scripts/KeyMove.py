@@ -5,6 +5,7 @@ from geometry_msgs.msg import Twist
 from dynamixel_workbench_msgs.srv import DynamixelCommand
 import termios, sys, tty
 import math
+import roslaunch
 
 TERMIOS=termios
 
@@ -27,13 +28,17 @@ def getkey():
     x=sys.stdin.read(1)[0]
     return x
 
-def currentAng(id):
+def listener():
     rospy.init_node('joint_listener', anonymous=True)
     rospy.Subscriber("/dynamixel_workbench/joint_states", jointState, callback)
     rospy.spin()
     
 def callback(data):
     rospy.loginfo(data.position)
+    currentAng[0]=data.position[0]
+    currentAng[1]=data.position[1]
+    currentAng[2]=data.position[2]
+    currentAng[3]=data.position[3]
     
 
 def nextArt():
@@ -54,9 +59,18 @@ HomeShoulder=90
 HomeElbow=0
 HomeWrist=0
 
+currentAng=[]
 
 i=1
 if __name__ == '__main__':
+    
+    rospy.init_node('en_Mapping', anonymous=True)
+    uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
+    roslaunch.configure_logging(uuid)
+    launch = roslaunch.parent.ROSLaunchParent(uuid, ["~/catkin_ws/src/Lab2Rob22.1/launch/px_rviz_dyna.launch"])
+    launch.start()
+    rospy.loginfo("started")
+
     moveart('', 1, 'Torque_Limit', 3*1024/4-1, 0)
     moveart('', 2, 'Torque_Limit', 2*1024/3-1, 0)
     moveart('', 3, 'Torque_Limit', 1024/2-1, 0)
@@ -74,12 +88,12 @@ if __name__ == '__main__':
             prevArt()
         elif Key==chr(65) or Key==chr(97): #Tecla A mueve articulacion a izq
             try:
-                moveart('', artID, 'Goal_Position', currentAng(artID)-1, 0.1)
+                moveart('', artID, 'Goal_Position', currentAng(artID-1)-1, 0.1)
             except rospy.ROSInterruptException:
                 pass
         elif Key==chr(68) or Key==chr(100): #Tecla D mueve articulacion a der
             try:
-                moveart('', artID, 'Goal_Position', currentAng(artID)+1, 0.1)
+                moveart('', artID, 'Goal_Position', currentAng(artID-1)+1, 0.1)
             except rospy.ROSInterruptException:
                 pass
         elif Key==chr(82) or Key==chr(114): #Tecla R mueve articulacion a home
