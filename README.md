@@ -10,6 +10,12 @@ By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
  - - - 
  ##  Cinematic analysis of the robot
+The first one, reference systems are assigned according to the DHstd convention. In this case, you can si the Root Phantom that is plotted with the tool in Matlab.
+
+<a href="https://ibb.co/TwDkF4n"><img src="https://i.ibb.co/D1PtS96/Px.png" alt="Px" border="0"></a>
+
+Then, there are the convention parameters of DHstd, and it is represented in the following table, where the letter q is variable.
+
  <a href="https://imgbb.com/"><img src="https://i.ibb.co/482tP1q/para.png" alt="para" border="0"></a>
  
 ## How to use this repo
