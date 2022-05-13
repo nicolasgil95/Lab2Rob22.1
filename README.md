@@ -123,8 +123,8 @@ __There's a bug using this file that, after closing the interaction, the termina
 
 --- 
 ## Conclusions
--After doing the scripts we have understood how to connect MATLAB to ROS master node and the to use the topics and services. Also we can start creating scripts for ROS packages in Python and use the services and topics.
+- After doing the scripts we have understood how to connect MATLAB to ROS master node and the to use the topics and services. Also we can start creating scripts for ROS packages in Python and use the services and topics.
 
--It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
+- It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
 
--Be careful when starting the robot's motors, as this can be dangerous.
+- Be careful when starting the robot's motors, as this can be dangerous.
