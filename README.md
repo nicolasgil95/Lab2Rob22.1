@@ -12,6 +12,8 @@ In this lab we try to manipulate the Phantom X robot using the keyboard of our l
 ## How to use this repo
 Clone this repo onto your Catkin workspace. Also is needed Matlab with dynamixel messages.
 
+With the Phantom X robot connected into your system you have to identify de IDs of the motors and modify them on the _config/joints.yaml_ file. In our case our robot had the ID from 6 to 10.
+
 Compile the package using the following command in a terminal on catkin workspace
 
 `caktin build lab2rob22_1`
@@ -58,6 +60,7 @@ You will see the video of the robot moving with the keyboard [here](__ENLACE VID
 
 Again, after running this script the terminal will be bugged and won't show any text.
 
+The script is simple: first we import some libraries to python.
 
 
 
