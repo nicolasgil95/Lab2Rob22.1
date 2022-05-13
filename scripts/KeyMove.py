@@ -67,7 +67,7 @@ currentAng=[]
 i=1
 if __name__ == '__main__':
     moveart('', 6, 'Torque_Limit', 3*1024/4-1, 0)
-    moveart('', 7, 'Torque_Limit', 3*1024/4-1, 0)
+    moveart('', 7, 'Torque_Limit', 2*1024/3-1, 0)
     moveart('', 8, 'Torque_Limit', 1024/2-1, 0)
     moveart('', 9, 'Torque_Limit', 1024/3-1, 0)
     while i==1:

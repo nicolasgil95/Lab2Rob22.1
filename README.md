@@ -9,6 +9,16 @@ By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
 ## Abstract
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
  - - - 
+
+ ##  Cinematic analysis of the robot
+The first one, reference systems are assigned according to the DHstd convention. In this case, you can si the Root Phantom that is plotted with the tool in Matlab. 
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/tXtr8yM/pp.jpg" alt="pp" border="0"></a>
+
+Then, there are the convention parameters of DHstd, and it is represented in the following table, where the letter q is variable.Therefore, the measurement is given in centimeters.
+
+ <a href="https://imgbb.com/"><img src="https://i.ibb.co/482tP1q/para.png" alt="para" border="0"></a>
+
 ## How to use this repo
 Clone this repo onto your Catkin workspace. Also is needed Matlab with dynamixel messages.
 
@@ -40,11 +50,11 @@ The first command wil enable the communication with the robot, the second one wi
 
 After this you should be able to control the robot using you laptop's keyboard:
 
-- Using _W_ and _S_ you will move between articulations, it will work cyclical.
+- Using _W_ and _S_ you will move between joints, it will work cyclical.
 
-- Using _A_ and _D_ the choosen articulation will move 90 degrees to left or right.
+- Using _A_ and _D_ the choosen joint will move 90 degrees to left or right.
 
-- Using _R_ the choosen articulation will go home.
+- Using _R_ the choosen joint will go home.
 
 - Using _H_ the robot will go home.
 
@@ -56,41 +66,36 @@ This is how it'll see on your pc's screen
 
 <a href="https://ibb.co/nDsby4Z"><img src="https://i.ibb.co/jLvTYqB/rvix-Python.png" alt="rvix-Python" border="0"></a>
 
-You will see the video of the robot moving with the keyboard [here](__ENLACE VIDEO TECLADO__).
-
-Again, after running this script the terminal will be bugged and won't show any text.
+You will see the video of the robot moving with the keyboard [here](https://youtu.be/rZpshr-DT9Q).
 
 The script is simple: first we import some libraries to python.
 
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/ccmTfWY/LIB.png" alt="LIB" border="0"></a>
 
+Then, there are the definitions of the functions used, one to communicate and send messages to the command service, the second and third ones aren't used as they are the required to connect to the topic and get the current position, but, sadly, we didn't manage to used that current position. Finally, there are two functions to move between joints.
 
+<a href="https://ibb.co/nQc3zSL"><img src="https://i.ibb.co/c2FbDdr/Func.png" alt="Func" border="0"></a>
 
+In the main you'll find the call for the functions. Also there is a part of the code that will give each motor a torque value so the robot won't move very aggresive.
 
+<a href="https://ibb.co/0mD587B"><img src="https://i.ibb.co/JmBZ01x/main.png" alt="main" border="0"></a>
 
+Again, after running this script the terminal will be bugged and won't show any text.
 
+---
 
-
-
-After having installed the software mentioned there go to your catkin workspace and on the src folder clone this repo, you can follow the next commands in terminal: 
-
-`cd catkin_ws/src` 
-
-`git clone https://github.com/nicolasgil95/Lab1Rob_22.1`
-
-Once cloned has finished, go back to Catkin workspace directory and build the package. This can be done with the following commands: 
-
-`cd ..` 
-
-`caktin build hello_turtle` 
-
-In case you haven't installed Catkin tools you can run `catkin_make` to build the package.
-
-__Be sure you don't have any other package with the name hello_turtle in the Catkin source folder because it will show an error when compiling__
-
-
-Anyway, after that's done you're ready to check and run the new scripts. 
-- - -
 ### Using the MATLAB script
+
+
+
+
+
+
+
+
+
+---
+
 
 First of all, for using both of the scripts you will need to start a ROS master node and launch the turtlesim turtlesim_node. To do that we need two terminal sessions. On the first one run  
 
@@ -119,56 +124,11 @@ Finally, the ´rosshutdown´ will end MATLAB connection to ROS master node.
 You can close MATLAB as it doesn't have more uses for upcoming parts.
 
 - - -
-### Python script
-To run the python script you must keep the previous executed terminals open and running. On a new terminal run the following command once you're on the catkin workspace directory:  
-
-`source devel/setup.bash` 
-
-This will make this terminal session load the scripts of the packages inside the catkin workspace folder. 
-
-Also, we can call the reset the turtlesim window just to make it look nicer. If you want to, run this commands: 
-
-`rosservice call /reset` 
-
-or, if you like the current turtle model, 
-
-`rosservice call /turtle1/teleport_absolute "x: 5.5 y: 5.5 theta: 0.0" ` 
-
-`rosservice call /clear` 
-
-Now, let's check the script, run a nano command like this from the catkin workspace directory: 
-
-`nano src/Lab1Rob_22.1/scripts/myTeleopKey.py` 
-
-This will open the script in the terminal session. First of all there are the library imports used. Apart from the used in the others python scripts included in the package there's the import of _termios_, _sys_ and _tty_ libraries that will be used to get the pressed key as this [page](https://stackoverflow.com/questions/34497323/what-is-the-easiest-way-to-detect-key-presses-in-python-3-on-a-linux-machine) shows.
-
-Then there's the definition of the functions used for reset, U-turn and movement required. The function teleport uses the service _teleport_absolute_ and will teleport the turtle to the _X_, _Y_ and _ang_ desired inputs, as it's used for resetting the turtle position we're using _5.5_, _5.5_ and _0_  as the input of the function. Therefore, the movement with the R keys to return to its center position and orientation, so the services turtle1/teleport absolute are implemented.
-
-<a href="https://ibb.co/6yFXH6K"><img src="https://i.ibb.co/PrgDcB2/tele.png" alt="tele" border="0"></a>
-
-The next function, _teleport1_ receives two values and uses the _teleport_relative_ service. As the function is used to the U-turn of the turtle the input will be _0_ and _math.pi_. Then is defined the function pubVel which is used to do the movements of the turtle being a publisher for the topic _/turtle1/cmd_vel_. As we don't need a _Y_ axis movement we only need two inputs, one for the linear move and the other one for angular rotation.  
-
-<a href="https://ibb.co/GFYn4dt"><img src="https://i.ibb.co/1by7t0d/tele1.png" alt="tele1" border="0"></a>
-
-Finally there's defined the function to read the keys. Then appears the main routine that will check which key is pressed and only reacts to: _W_, _S_, _A_ and _D_ for movement and rotations, _space_ for U-turn, and _R_ to reset turtle position and _Esc_ to end the python process.  
-
-Now that you know how that code works you can get out of nano editor using _ctrl+x_ and run the scrip using the command 
-
-`rosrun hello_turtle myTeleopKey.py` 
-
-<a href="https://ibb.co/Z883Tnp"><img src="https://i.ibb.co/wWWT69F/ejem1.png" alt="ejem1" border="0"></a>
-
-It can be seen that the turtle moved forward because the letter w on the keyboard was pressed. Then, the letter R is pressed, which has ubicated the turtle where it was initially.
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/z64dJjQ/ejempl2.png" alt="ejempl2" border="0"></a>
-
-Check the turtlesim window as you press the previously mentioned keys to see the movement. Once you saw the turtle moving can close using _Esc_. 
-
-__There's a bug using this file that, after closing the interaction, the terminal session where the file was executed will no show the text write onto it but it'll be recorded anyway.__ 
 
 --- 
 ## Conclusions
--After doing the scripts we have understood how to connect MATLAB to ROS master node and the to use the topics and services. Also we can start creating scripts for ROS packages in Python and use the services and topics.
+- .
 
--It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
+- It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
 
+- Be careful when starting the robot's motors, as this can be dangerous.
