@@ -7,7 +7,7 @@ In this lab we try to manipulate the Phantom X robot using the keyboard of our l
  ##  Cinematic analysis of the robot
 The first one, reference systems are assigned according to the DHstd convention. In this case, you can si the Root Phantom that is plotted with the tool in Matlab. 
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/LhgbTm9/Px.png" alt="Px" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/tXtr8yM/pp.jpg" alt="pp" border="0"></a>
 
 Then, there are the convention parameters of DHstd, and it is represented in the following table, where the letter q is variable.Therefore, the measurement is given in centimeters.
 
@@ -61,7 +61,7 @@ Once cloned has finished, go back to Catkin workspace directory and build the pa
 
 `cd ..` 
 
-`caktin build hello_turtle` 
+`caktin build Lab1Rob_22.1` 
 
 In case you haven't installed Catkin tools you can run `catkin_make` to build the package.
 
@@ -70,7 +70,12 @@ __Be sure you don't have any other package with the name hello_turtle in the Cat
 
 Anyway, after that's done you're ready to check and run the new scripts. 
 
-the visualization of the manipulator in RViz, in such a way that all the movements are evidenced
+
+
+Then, you can analyse the visualization of the manipulator in RViz, in such a way that all the movements are evidenced. This can be done with the following commands: 
+
+`rosrun rviz` 
+
 __This is the link to watch the video:
 https://youtube.com/shorts/hQJ9POvi2n4
 - - -
@@ -122,4 +127,4 @@ __There's a bug using this file that, after closing the interaction, the termina
 
 -It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
 
-- Be careful when starting the robot's motors, as this can be dangerous.
+-Be careful when starting the robot's motors, as this can be dangerous.
