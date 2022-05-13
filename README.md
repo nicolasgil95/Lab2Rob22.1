@@ -2,6 +2,8 @@
 
 By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
 
+_We had a trouble doing the commits to this repo so all were made by Nicolas Gil using VS code but Jhon Muñoz participated in the creation of the scrips and the explanation of matlab code, he made pull request but I wasn't able to merge them._
+
 ## Abstract
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
 - - - 
@@ -69,6 +71,8 @@ The script is simple: first we import some libraries to python.
 
 Then, there are the definitions of the functions used, one to communicate and send messages to the command service, the second and third ones aren't used as they are the required to connect to the topic and get the current position, but, sadly, we didn't manage to used that current position. Finally, there are two functions to move between joints.
 
+The service message function receives degrees angles and convert them to bits so the message understands them. Thats done by getting the desired angle, add 135 to it, and divide into the resolution of movement.
+
 <a href="https://ibb.co/nQc3zSL"><img src="https://i.ibb.co/c2FbDdr/Func.png" alt="Func" border="0"></a>
 
 In the main you'll find the call for the functions. Also there is a part of the code that will give each motor a torque value so the robot won't move very aggresive.
@@ -80,12 +84,35 @@ Again, after running this script the terminal will be bugged and won't show any 
 - - -
 
 ### Using the MATLAB script
+This is the [link](https://youtu.be/wtryydCzOSE) to watch the video:
 
-asd
+
+First of all, for using both of the scripts you will need to start a ROS master node To do that we need two terminal sessions. 
+
+We use the "link" function of robotic toolbox 
+
+<a href="https://ibb.co/k8rHtFh"><img src="https://i.ibb.co/BZ7z9Rg/M1.png" alt="M1" border="0"></a>
+
+On the other hand, Ros and the topic have been connected. Given the above, it calls you the services and the messages to make the robot work.
+
+<a href="https://ibb.co/YpQpRsh"><img src="https://i.ibb.co/NZCZVBK/M2.png" alt="M2" border="0"></a>
+
+Robot at home
+
+<a href="https://ibb.co/KjLkTC2"><img src="https://i.ibb.co/nsnvxh7/H.jpg" alt="H" border="0"></a>
+
+You can see some of the robot configurations in the next image
+
+<a href="https://ibb.co/4pyNcKp"><img src="https://i.ibb.co/qpG1z7p/f1.jpg" alt="f1" border="0"></a>
+
+Additionally, we can watch another position about the tool of work 
+
+<a href="https://ibb.co/VYHPFTV"><img src="https://i.ibb.co/Mk83z7n/f2.jpg" alt="f2" border="0"></a>
+
 - - -
 ## Conclusions
-- .
+- In this lab we learned how to command the robot joints and get their position using both, python and matlab.
 
-- It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
+- The python script can be upgraded so we get the current position of the joints and let the joint move gradualy from that position.
 
 - Be careful when starting the robot's motors, as this can be dangerous.
