@@ -9,6 +9,9 @@ By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
 ## Abstract
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
  - - - 
+ ##  Cinematic analysis of the robot
+ <a href="https://imgbb.com/"><img src="https://i.ibb.co/482tP1q/para.png" alt="para" border="0"></a>
+ 
 ## How to use this repo
 Clone this repo onto your Catkin workspace. Also is needed Matlab with dynamixel messages.
 
