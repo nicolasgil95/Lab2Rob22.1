@@ -3,8 +3,6 @@
 Falta:
   -Diagrama del robot.
   -Actualizar en .m las longitudes de los eslabones.
-  -Dar rviz al .py
-  -Revisar como obtener el valor actual de la articulacion en el .py
   -Pruebas de todo operativo.
 
 By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
@@ -15,8 +13,11 @@ In this lab we try to manipulate the Phantom X robot using the keyboard of our l
 Clone this repo onto your Catkin workspace. Also is needed Matlab with dynamixel messages.
 
 Compile the package using the following command in a terminal on catkin workspace
+
 `caktin build lab2rob22_1`
+
 Then, source bash 
+
 `source devel/setup.bash`
 
 After this is done and with no errors showed you will be ready to run de scripts.
@@ -26,12 +27,22 @@ On the scripts folder there will be a python script named _KeyMove.py_ and 4 mat
 # Python Script
 
 The python script can be run using the following commands, on one terminal run:
+
 `roscore`
-on other sorced terminal run:
+
+on other sourced terminal run:
+
 `rosrun lab2rob22_1 KeyMove.py`
 
+After this you should be able to control the robot using you laptop's keyboard:
 
+- Using _W_ and _S_ you will move between articulations, it will work cyclical.
 
+- Using _A_ and _D_ the choosen articulation will move to left or right.
+
+- Using _R_ the choosen articulation will go home.
+
+- Using _H_ the robot will go home.
 
 
 

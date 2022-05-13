@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 from operator import le
 import rospy
-from geometry_msgs.msg import Twist 
+from std_msgs.msg import String
+from sensor_msgs.msg import JointState
 from dynamixel_workbench_msgs.srv import DynamixelCommand
 import termios, sys, tty
 import math
