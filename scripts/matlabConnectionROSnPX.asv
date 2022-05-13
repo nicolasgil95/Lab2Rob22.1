@@ -1,5 +1,5 @@
 clear;clf;clc;
-l=[13.37 10.665 10.665 10.935];
+l=[13.37 10.66 10.66 10.93];
 alpha=[pi/2 0 0 0];
 a=[0 l(2) l(3) l(4)];
 d=[l(1) 0 0 0];
@@ -31,25 +31,6 @@ call(PxCommSrv,CommandMsg)%llamado al servicio con msj definido
 
 
 %% definicion de posicion de articulaciones
-q=[0 0 0 0];
-
-% envio de posicion a robot fisico
-for i=6:9
-    CommandMsg.Id=i;
-    CommandMsg.AddrName='Goal_Position';
-    CommandMsg.Value=((q(i-5)+135)/(270/1024));
-    call(PxCommSrv,CommandMsg);
-end
-
-%Lectura posicion del robot
-Q=jointSub.LatestMessage.Position
-
-%Grafica de las posiciones actuales del robot
-PX.plot(Q(1:4)','workspace',ws,'noname')
-PX.plot(Q(1:4)','workspace',ws,'noname')
-view(3)
-pause(3);
-
 q=[-20 20 -20 20];
 
 % envio de posicion a robot fisico
@@ -69,61 +50,6 @@ PX.plot(Q(1:4)','workspace',ws,'noname')
 view(3)
 pause(3);
 
-q=[30 -30 30 -30];
 
-% envio de posicion a robot fisico
-for i=6:9
-    CommandMsg.Id=i;
-    CommandMsg.AddrName='Goal_Position';
-    CommandMsg.Value=((q(i-5)+135)/(270/1024));
-    call(PxCommSrv,CommandMsg);
-end
-
-%Lectura posicion del robot
-Q=jointSub.LatestMessage.Position
-
-%Grafica de las posiciones actuales del robot
-PX.plot(Q(1:4)','workspace',ws,'noname')
-PX.plot(Q(1:4)','workspace',ws,'noname')
-view(3)
-pause(3);
-
-q=[-90 15 -55 17];
-
-% envio de posicion a robot fisico
-for i=6:9
-    CommandMsg.Id=i;
-    CommandMsg.AddrName='Goal_Position';
-    CommandMsg.Value=((q(i-5)+135)/(270/1024));
-    call(PxCommSrv,CommandMsg);
-end
-
-%Lectura posicion del robot
-Q=jointSub.LatestMessage.Position
-
-%Grafica de las posiciones actuales del robot
-PX.plot(Q(1:4)','workspace',ws,'noname')
-PX.plot(Q(1:4)','workspace',ws,'noname')
-view(3)
-pause(3);
-
-q=[-90 45 -55 45];
-
-% envio de posicion a robot fisico
-for i=6:9
-    CommandMsg.Id=i;
-    CommandMsg.AddrName='Goal_Position';
-    CommandMsg.Value=((q(i-5)+135)/(270/1024));
-    call(PxCommSrv,CommandMsg);
-end
-
-%Lectura posicion del robot
-Q=jointSub.LatestMessage.Position
-
-%Grafica de las posiciones actuales del robot
-PX.plot(Q(1:4)','workspace',ws,'noname')
-PX.plot(Q(1:4)','workspace',ws,'noname')
-view(3)
-pause(3);
 %% Apagado del nodo
 rosshutdown;

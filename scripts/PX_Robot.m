@@ -1,6 +1,6 @@
 clear;clf;clc;
 %% parametros DH
-l=[13.37 10.665 10.665 10.935];
+l=[13.37 10.66 10.66 10.93];
 alpha=[pi/2 0 0 0];
 a=[0 l(2) l(3) l(4)];
 d=[l(1) 0 0 0];
@@ -31,4 +31,3 @@ PX.plot(deg2rad(q),'workspace',ws);
 %%
 q=[-90 45 -55 45];
 PX.plot(deg2rad(q),'workspace',ws);
-

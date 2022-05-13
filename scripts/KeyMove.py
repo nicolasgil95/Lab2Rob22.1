@@ -6,13 +6,18 @@ from sensor_msgs.msg import JointState
 from dynamixel_workbench_msgs.srv import DynamixelCommand
 import termios, sys, tty
 import math
-import roslaunch
 
 TERMIOS=termios
 
+artID=6
+HomeWaist=0
+HomeShoulder=0
+HomeElbow=0
+HomeWrist=0
+
 #Funcion para mover articulacion
 def moveart(command, art_ID, addr_name, ang, time):
-    rospy.wait_for_service('dynamyxel_workbench/dynamixel_command')
+    rospy.wait_for_service('dynamixel_workbench/dynamixel_command')
     try:
         value=int((ang+135)/(270/1024)) #conversion de angulos Deg a bits
         dynamixel_command = rospy.ServiceProxy('/dynamixel_workbench/dynamixel_command', DynamixelCommand)
@@ -40,82 +45,71 @@ def callback(data):
     currentAng[1]=data.position[1]
     currentAng[2]=data.position[2]
     currentAng[3]=data.position[3]
+    print(data.position)
     
 
-def nextArt():
-    if artID==4:
-        artID=1
+def nextArt(ID):
+    if ID==9:
+        ID=6
     else:
-        artID+=1
+        ID+=1
+    return ID
 
-def prevArt():
-    if artID==1:
-        artID=4
+def prevArt(ID):
+    if ID==6:
+        ID=9
     else:
-        artID-=1
-
-artID=1
-HomeWaist=0
-HomeShoulder=90
-HomeElbow=0
-HomeWrist=0
+        ID-=1
+    return ID
 
 currentAng=[]
 
 i=1
 if __name__ == '__main__':
-    
-    rospy.init_node('en_Mapping', anonymous=True)
-    uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
-    roslaunch.configure_logging(uuid)
-    launch = roslaunch.parent.ROSLaunchParent(uuid, ["~/catkin_ws/src/Lab2Rob22.1/launch/px_rviz_dyna.launch"])
-    launch.start()
-    rospy.loginfo("started")
-
-    moveart('', 1, 'Torque_Limit', 3*1024/4-1, 0)
-    moveart('', 2, 'Torque_Limit', 2*1024/3-1, 0)
-    moveart('', 3, 'Torque_Limit', 1024/2-1, 0)
-    moveart('', 4, 'Torque_Limit', 1024/3-1, 0)
+    moveart('', 6, 'Torque_Limit', 3*1024/4-1, 0)
+    moveart('', 7, 'Torque_Limit', 3*1024/4-1, 0)
+    moveart('', 8, 'Torque_Limit', 1024/2-1, 0)
+    moveart('', 9, 'Torque_Limit', 1024/3-1, 0)
     while i==1:
         Key=getkey()
-        if Key==chr(32): #Tecla H mueve articulaciones a HOME
-                moveart('', 1, 'Goal_Position', HomeWaist, 0.5)
-                moveart('', 2, 'Goal_Position', HomeShoulder, 0.5)
-                moveart('', 3, 'Goal_Position', HomeElbow, 0.5)
-                moveart('', 4, 'Goal_Position', HomeWrist, 0.5)
+        if Key==chr(72) or Key==chr(104): #Tecla H mueve articulaciones a HOME
+                moveart('', 6, 'Goal_Position', HomeWaist, 0.5)
+                moveart('', 7, 'Goal_Position', HomeShoulder, 0.5)
+                moveart('', 8, 'Goal_Position', HomeElbow, 0.5)
+                moveart('', 9, 'Goal_Position', HomeWrist, 0.5)
         elif Key==chr(87) or Key==chr(119): #Tecla W mueve entre articulacion
-            nextArt()
+            artID=nextArt(artID)
         elif Key==chr(83) or Key==chr(115): #Tecla S mueve entre articulacion
-            prevArt()
+            artID=prevArt(artID)
         elif Key==chr(65) or Key==chr(97): #Tecla A mueve articulacion a izq
             try:
-                moveart('', artID, 'Goal_Position', currentAng(artID-1)-1, 0.1)
+                moveart('', artID, 'Goal_Position', -90, 0.1)
             except rospy.ROSInterruptException:
                 pass
         elif Key==chr(68) or Key==chr(100): #Tecla D mueve articulacion a der
             try:
-                moveart('', artID, 'Goal_Position', currentAng(artID-1)+1, 0.1)
+                moveart('', artID, 'Goal_Position', 90, 0.1)
             except rospy.ROSInterruptException:
                 pass
         elif Key==chr(82) or Key==chr(114): #Tecla R mueve articulacion a home
-            if artID==1:
+            if artID==6:
                 try:
-                    moveart('', 1, 'Goal_Position', HomeWaist, 0)
+                    moveart('', 6, 'Goal_Position', HomeWaist, 0)
                 except rospy.ROSInterruptException:
                     pass
-            elif artID==2:
+            elif artID==7:
                 try:
-                    moveart('', 2, 'Goal_Position', HomeShoulder, 0)
+                    moveart('', 7, 'Goal_Position', HomeShoulder, 0)
                 except rospy.ROSInterruptException:
                     pass
-            elif artID==3:
+            elif artID==8:
                 try:
-                    moveart('', 3, 'Goal_Position', HomeElbow, 0)
+                    moveart('', 8, 'Goal_Position', HomeElbow, 0)
                 except rospy.ROSInterruptException:
                     pass
-            elif artID==4:
+            elif artID==9:
                 try:
-                    moveart('', 4, 'Goal_Position', HomeWrist, 0)
+                    moveart('', 9, 'Goal_Position', HomeWrist, 0)
                 except rospy.ROSInterruptException:
                     pass
         elif Key==chr(27): #ESC
