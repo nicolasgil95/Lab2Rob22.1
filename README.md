@@ -122,3 +122,4 @@ __There's a bug using this file that, after closing the interaction, the termina
 
 -It was possible to know the main ROS commands, and the importance of its nodes to be connected in both Matlab and Python.
 
+- Be careful when starting the robot's motors, as this can be dangerous.
