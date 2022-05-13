@@ -1,16 +1,11 @@
 # Lab 2: PX manipulation with ROS on python and matlab
 
-Falta:
-  -Diagrama del robot.
-  -Actualizar en .m las longitudes de los eslabones.
-  -Pruebas de todo operativo.
-
 By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
+
 ## Abstract
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
- - - - 
-
- ##  Cinematic analysis of the robot
+- - - 
+##  Cinematic analysis of the robot
 The first one, reference systems are assigned according to the DHstd convention. In this case, you can si the Root Phantom that is plotted with the tool in Matlab. 
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/tXtr8yM/pp.jpg" alt="pp" border="0"></a>
@@ -82,50 +77,12 @@ In the main you'll find the call for the functions. Also there is a part of the 
 
 Again, after running this script the terminal will be bugged and won't show any text.
 
----
+- - -
 
 ### Using the MATLAB script
 
-
-
-
-
-
-
-
-
----
-
-
-First of all, for using both of the scripts you will need to start a ROS master node and launch the turtlesim turtlesim_node. To do that we need two terminal sessions. On the first one run  
-
-`roscore` 
-
-In the second one run: 
-
-`rosrun turtlesim turtlesim_node` 
-
-If everything went well our turtlesim window will pop up with a turtle on it. 
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/TLTZQ0Q/Screenshot-from-2022-04-06-20-48-17.png" alt="Screenshot-from-2022-04-06-20-48-17" border="0"></a>
-
-Now launch MATLAB and navigate to the scripts folder of the cloned repository. Once there open the _Lab1.m_ file. It has six sections, the first has three lines where the more relevant is ´rosinit´ because it will allow MATLAB connect to ROS master node. Here you must have the ROS toolbox installed in MATLAB. 
-
-The next section will create a publisher called _velPub_ and a publish message _velMsg_. The third section will assign a value to the message that will be published and that value is a linear type in X direction with a value of 1, then will send the previous configured message to the topic. 
-
-The fourth section generates a subscriber node to get the latest message in the _Pose_ topic. Until here we have already used a publisher and subscriber to use with ROS topics via MATLAB. 
-
-Now, in the fifth section we're going to use the services of this ROS package. You will find a commented line that was an attempt to use the clear service but it wasn't successful. Then you will see the creation of a client related to the _teleport_absolute_ service. After that there's the creation of the message that will be used and the assign of the three values we'll handle, _X_, _Y_ and _angle_, if you run that section the turtle on the turtlesim window will teleport to (3,7) and will be looking towards the upside of the window. 
-
-<a href="https://ibb.co/fMpq6HV"><img src="https://i.ibb.co/PxhFXgs/Screenshot-from-2022-04-06-21-33-01.png" alt="Screenshot-from-2022-04-06-21-33-01" border="0"></a> 
-
-Finally, the ´rosshutdown´ will end MATLAB connection to ROS master node. 
-
-You can close MATLAB as it doesn't have more uses for upcoming parts.
-
+asd
 - - -
-
---- 
 ## Conclusions
 - .
 
