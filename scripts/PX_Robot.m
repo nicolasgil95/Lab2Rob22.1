@@ -1,6 +1,6 @@
 clear;clf;clc;
 %% parametros DH
-l=[1 1 1 1];
+l=[13.37 10.665 10.665 10.935];
 alpha=[pi/2 0 0 0];
 a=[0 l(2) l(3) l(4)];
 d=[l(1) 0 0 0];
