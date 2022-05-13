@@ -64,19 +64,35 @@ __Be sure you don't have any other package with the name hello_turtle in the Cat
 
 
 Anyway, after that's done you're ready to check and run the new scripts. 
+
+the visualization of the manipulator in RViz, in such a way that all the movements are evidenced
+__This is the link to watch the video:
+https://youtube.com/shorts/hQJ9POvi2n4
 - - -
 ### Using the MATLAB script
+__This is the link to watch the video:
+https://youtu.be/wtryydCzOSE
 
-First of all, for using both of the scripts you will need to start a ROS master node and launch the turtlesim turtlesim_node. To do that we need two terminal sessions. On the first one run  
+First of all, for using both of the scripts you will need to start a ROS master node To do that we need two terminal sessions. 
 
-`roscore` 
 
+
+Robot at home
+
+<a href="https://ibb.co/KjLkTC2"><img src="https://i.ibb.co/nsnvxh7/H.jpg" alt="H" border="0"></a>
+
+You can see some of the robot configurations in the next image
 
 <a href="https://ibb.co/4pyNcKp"><img src="https://i.ibb.co/qpG1z7p/f1.jpg" alt="f1" border="0"></a>
 
+Additionally, we can watch another position about the tool of work 
 
+<a href="https://ibb.co/VYHPFTV"><img src="https://i.ibb.co/Mk83z7n/f2.jpg" alt="f2" border="0"></a>
 - - - 
 ### Python script
+__This is the link to watch the video:
+https://youtu.be/rZpshr-DT9Q
+
 To run the python script you must keep the previous executed terminals open and running. On a new terminal run the following command once you're on the catkin workspace directory:  
 
 `source devel/setup.bash` 
