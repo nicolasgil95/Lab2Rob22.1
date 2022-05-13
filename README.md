@@ -28,21 +28,43 @@ On the scripts folder there will be a python script named _KeyMove.py_ and 4 mat
 
 The python script can be run using the following commands, on one terminal run:
 
-`roscore`
+`roslaunch lab2rob22_1 px_controllers.launch`
 
 on other sourced terminal run:
 
 `rosrun lab2rob22_1 KeyMove.py`
 
+The first command wil enable the communication with the robot, the second one will launch the python script.
+
 After this you should be able to control the robot using you laptop's keyboard:
 
 - Using _W_ and _S_ you will move between articulations, it will work cyclical.
 
-- Using _A_ and _D_ the choosen articulation will move to left or right.
+- Using _A_ and _D_ the choosen articulation will move 90 degrees to left or right.
 
 - Using _R_ the choosen articulation will go home.
 
 - Using _H_ the robot will go home.
+
+Also, if you run the next command in other terminal you will visualize the robot in rviz:
+
+`roslaunch lab2rob22_1 px_rviz_dyna.launch`
+
+This is how it'll see on your pc's screen
+
+<a href="https://ibb.co/nDsby4Z"><img src="https://i.ibb.co/jLvTYqB/rvix-Python.png" alt="rvix-Python" border="0"></a>
+
+You will see the video of the robot moving with the keyboard [here](__ENLACE VIDEO TECLADO__).
+
+Again, after running this script the terminal will be bugged and won't show any text.
+
+
+
+
+
+
+
+
 
 
 
