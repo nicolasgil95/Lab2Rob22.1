@@ -1,10 +1,5 @@
 # Lab 2: PX manipulation with ROS on python and matlab
 
-Falta:
-  -Diagrama del robot.
-  -Actualizar en .m las longitudes de los eslabones.
-  -Pruebas de todo operativo.
-
 By: Jhon Brandol Muñoz Romero and Nicolas Gil Rojas
 ## Abstract
 In this lab we try to manipulate the Phantom X robot using the keyboard of our laptop. Also we give a position to the robot using Matlab and get a representation of the current pose using the RVC toolbox.
