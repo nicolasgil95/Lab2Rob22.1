@@ -63,7 +63,7 @@ This is how it'll see on your pc's screen
 
 <a href="https://ibb.co/nDsby4Z"><img src="https://i.ibb.co/jLvTYqB/rvix-Python.png" alt="rvix-Python" border="0"></a>
 
-You will see the video of the robot moving with the keyboard [here](https://youtu.be/rZpshr-DT9Q).
+You will see the video of the robot moving with the keyboard [here](https://youtu.be/rZpshr-DT9Q), and [here](https://youtube.com/shorts/hQJ9POvi2n4) is a video of rviz running and displaying the movements of the robot.
 
 The script is simple: first we import some libraries to python.
 
